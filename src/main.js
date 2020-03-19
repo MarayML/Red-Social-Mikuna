@@ -2,14 +2,14 @@ import { viewTemplate } from './view-controller/router.js';
 
 const init = () => {
   const app = firebase.initializeApp({
-    apiKey: 'AIzaSyDbD06CrpZ2ItVxy4f33eRlbFM8GX_CF9k',
-    authDomain: 'social-network-b3bb7.firebaseapp.com',
-    databaseURL: 'https://social-network-b3bb7.firebaseio.com',
-    projectId: 'social-network-b3bb7',
-    storageBucket: 'gs://social-network-b3bb7.appspot.com',
-    messagingSenderId: '2817858639',
-    appId: '1:2817858639:web:70c63c4b90a28861d8de3a',
-    measurementId: 'G-5WZN70EDCZ',
+    apiKey: "AIzaSyBo8EpJ6fCQUNqnKIG4RrydMH6ViPxR34M",
+    authDomain: "mikuna-2f0e9.firebaseapp.com",
+    databaseURL: "https://mikuna-2f0e9.firebaseio.com",
+    projectId: "mikuna-2f0e9",
+    storageBucket: "mikuna-2f0e9.appspot.com",
+    messagingSenderId: "576889277146",
+    appId: "1:576889277146:web:f90a0289ab7ce339e1f3e3",
+    measurementId: "G-0MPDMGRHXB"
   });
   viewTemplate(window.location.hash);
   window.addEventListener('hashchange', () => viewTemplate(window.location.hash));
