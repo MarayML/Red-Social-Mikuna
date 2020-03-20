@@ -18,6 +18,7 @@ export const viewTemplate = (router) => {
     { return base.appendChild(components.vistaRegistro()); }
     case '#/mikuna':
     { return logUser((idUser) => getUserById(idUser).then((response) => {
+      console.log('entro');      
       const userData = {
         nameUser: response.data().nameUser,
         photoUser: response.data().photoUser,

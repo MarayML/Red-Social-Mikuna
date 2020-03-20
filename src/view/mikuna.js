@@ -9,9 +9,11 @@ export default (userData) => {
   const mikunaMain = document.createElement('div');
   const postTemplate = `
   <section class = "display-flex">
+  <nav class = "nav-bar">HOla</nav>
   <section class="social-perfil">
   <img class="photo-current-user" src='${userData.photoUser}'>
       <h2>${userData.nameUser}</h2>
+      <p>${userData.ocupacionUser}<p>
       <p>${userData.emailUser}<p>
   <button class = "btn-cerrar-sesion">Cerrar Sesión</button>
   </section>

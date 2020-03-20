@@ -6,39 +6,37 @@ export const facebookLoginEvent = (event) => {
   event.preventDefault();
   const errorMsg = document.querySelector('.ms-error');
   facebookLog().then((response) => {
-    getUserById(response.user.uid).then(() => window.location.hash = '#/mikuna').catch(() => {
       const userData = {
         idUser: response.user.uid,
-        photoUser: response.user.photoURL,
         nameUser: response.user.displayName,
-        ocupacionUser: null,
+        photoUser: response.user.photoURL,
+        birthUser: '',
+        ocupacionUser: '',
         emailUser: response.user.email,
       };
       createUserCollection(userData);
       window.location.hash = '#/mikuna';
     })
       .catch((error) => errorMsg.innerHTML = error.code);
-  });
-};
+  };
 
 export const googleLoginEvent = (event) => {
   event.preventDefault();
   const errorMsg = document.querySelector('.ms-error');
   googleLog().then((response) => {
-    getUserById(response.user.uid).then(() => window.location.hash = '#/mikuna').catch(() => {
-      const userData = {
-        idUser: response.user.uid,
-        photoUser: response.user.photoURL,
-        nameUser: response.user.displayName,
-        ocupacionUser: null,
-        emailUser: response.user.email,
-      };
-      createUserCollection(userData);
+    const userData = {
+      idUser: response.user.uid,
+      nameUser: response.user.displayName,
+      photoUser: response.user.photoURL,
+      birthUser: '',
+      ocupacionUser: '',
+      emailUser: response.user.email,
+    };
+    createUserCollection(userData);
       window.location.hash = '#/mikuna';
     })
       .catch((error) => errorMsg.innerHTML = error.code);
-  });
-};
+  };
 
 export const errorEmail = (email, password) => {
   password.classList.remove('field-error');

@@ -3,26 +3,10 @@ import { registerLog } from '../firebase/auth.js';
 import { createUserCollection } from '../firebase/post.js';
 import { errorEmail, errorPassword } from './login-controller.js';
 
-/*
-const getPhotoUser = (urlFile) => {
-  if (urlFile.value !== '') {
-    const file = urlFile.file[0];
-    const reader = new FileReader();
-    reader.onloadend = () => {
-      urlFile.value = reader.result;
-    };
-    if (file) {
-      reader.readAsDataURL(file);
-    } else {
-      return '../image/photo.png';
-    }
-  }
-}; */
 
 export const registerLogEvent = (event) => {
   event.preventDefault();
   const name = document.querySelector('#input-name');
-  const photo = document.querySelector('#input-photo');
   const birth = document.querySelector('#input-birth');
   const ocupacion = document.querySelector('#input-ocupacion');
   const email = document.querySelector('#input-email');
@@ -32,7 +16,7 @@ export const registerLogEvent = (event) => {
     const userData = {
       idUser: response.user.uid,
       nameUser: name.value,
-      photoUser: photo.value,
+      photoUser: './image/photo.png',
       birthUser: birth.value,
       ocupacionUser: ocupacion.value,
       emailUser: email.value,

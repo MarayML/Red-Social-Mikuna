@@ -11,7 +11,6 @@ export default () => {
     <h5>Registre sus datos</h5>
   <form>
   <input type="text" name = "Name" id = "input-name" placeholder= "  Name" class="field"><br><br>
-  <input type="text" class="field" id="input-photo" placeholder= "  Foto de perfil" onfocus="(this.type='file')"><br><br>
   <input type="text" class="field" id="input-birth" placeholder= "  Fecha de nacimiento" onfocus="(this.type='date')" onblur="(this.type='text')"><br><br>
   <input type="text" name = "Ocupacion" id = "input-ocupacion" placeholder= "  Ocupacion" class="field"><br><br>
   <input type="email" name = "Correo" id = "input-email" placeholder= "  Email" class="field"><br><br>
