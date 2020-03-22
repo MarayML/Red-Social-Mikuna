@@ -5,6 +5,61 @@
   text-align: center;
 }
 
+.nav-bar{
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  border-radius: 10px;
+}
+
+.nav-bar section{
+  padding-top: 5px;
+  display: flex;
+}
+
+.nav-bar section h2{
+  color: white;
+  font-family: 'Fredoka One', cursive;
+  font-size: 25px;
+  color: rgb(86, 199, 61);
+  padding-left: 30px;
+}
+
+.btn-privacy{
+  background: none;
+  border: none;
+  padding: 0px;
+  margin-top: 5px;
+  font-family: 'Sen', sans-serif;
+  font-size: 15px;
+}
+
+.header-private .icon-arrow{
+  margin-right: 30px;
+  font-size: 20px;
+}
+
+.ul-private{
+  margin: 0px;
+  padding: 10px;
+  list-style: none;
+  border: 1px solid orange;
+  position: absolute;
+  margin-top: 45px;
+  margin-left: -17px;
+  background-color: white;
+  border: 1px inset #58FF33;
+  font-family: 'Sen', sans-serif;
+  font-size: 15px;
+}
+
+.logo-nav{
+  width: 30%;
+  padding-top: -5px;
+  border-radius: 50px;
+  padding-left: 20px;
+}
+
 .footer-input-post{
   width: 100%;
   margin-top: 10px;
@@ -29,7 +84,7 @@
 
 .social-perfil{
   width: 40%;
-  margin-top: 20px;
+  margin-top: 40px;
   display: flex;
   flex-direction: column;
   justify-content: top;
@@ -39,19 +94,27 @@
 
 .input-post{
   margin-bottom: 10px;
-  margin-top: 20px;
   width: 90%;
   border: 1px solid #58FF33;
   border-radius: 10px;
-  background: linear-gradient(180deg, #DDFDBB 0%, rgb(207, 248, 164) 99.99%, rgba(255, 255, 255, 0) 100%);  
   display: flex;
   justify-content: center;
   text-align: center;
   align-items: center;
+  background: url('./image/post.jpg') cover;
+}
+
+#content-for-post{
+  border: 2px dotted #58FF33;
+  border-radius: 10px;
+  text-align: center;
+  padding: 5px;
 }
 
 .social-post{
   width: 60%;
+  margin-top: 0px;
+  padding-top: 0px;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -101,11 +164,12 @@
 }
 
 .icon-privacity{
-  display: flex;
-  margin-left: 30px;
   font-size: 15px;
 }
 
+.icon-privacity:hover{
+  color: rgb(51, 179, 22);
+}
 
 .menu-barras{
   margin-top: 30px;
@@ -256,13 +320,13 @@
 }
 
 .active-icon{
-  color: rgb(197, 194, 194);
+  color: rgb(86, 199, 61);
 }
 
 .icon-post-img{
   margin-left: 30px;
-  font-size: 25px;
-  color: rgb(22, 36, 189);
+  font-size: 30px;
+  color: rgb(86, 199, 61);
 }
 
 .main-init{

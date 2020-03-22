@@ -3,6 +3,15 @@ import { getPost, savePost } from '../firebase/post.js';
 import { currentUser, signOut } from '../firebase/auth.js';
 import { paintPost } from '../view/template.js';
 
+export const showMenuPrivacity = (event) => {
+  event.preventDefault();
+  const menu = document.querySelector('.ul-private');
+  if (menu.classList.value.includes('hide'))
+    menu.classList.remove('hide');
+  else
+    menu.classList.add('hide');
+}
+
 // llamada a guardar post en el database
 export const createPostEvent = (event) => {
   event.preventDefault();
@@ -27,11 +36,16 @@ export const paintMikunaPost = (user) => {
 
 export const iconPrivateEvent = (event) => {
   event.preventDefault();
+  const menu = document.querySelector('.ul-private');
+  const button =  document.querySelector('.btn-privacy');
   if (event.target.id === 'icon-private') {
     document.querySelector('#content-for-post').setAttribute('name', 'Private');
+    button.textContent = 'Solo Yo';
+    menu.classList.add('hide');
   } else {
     document.querySelector('#content-for-post').setAttribute('name', 'Public');
-    event.classList.add('.active-icon');
+    button.textContent = 'Publico';
+    menu.classList.add('hide');
   }
 };
 export const iconsignOutEvent = (event) => {
