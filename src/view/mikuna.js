@@ -34,7 +34,7 @@ export default (userData) => {
     <li class="icon-privacity" id="icon-private"><i class="fas fa-lock"></i> Solo yo</li>
     </ul>
    </div>
-  <textarea id = "content-for-post" name = "Public" placeholder="¿Tienes algo que contarnos?"></textarea>
+  <textarea class = textarea-post id = "content-for-post" name = "Public" placeholder="¿Tienes algo que contarnos?"></textarea>
   <div class = footer-input-post>
   <div><i class="far fa-image icon-post-img"></i></div>
   <button id = "button-create-post" class = "btn-publicar">Publicar</button>

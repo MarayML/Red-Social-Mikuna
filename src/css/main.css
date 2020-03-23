@@ -248,6 +248,16 @@
   color: rgb(51, 179, 22);
 }
 
+#icon-edit-post:hover{
+  color: black;
+  font-weight: bolder;
+}
+
+#icon-delete-post:hover{
+  color: black;
+  font-weight: bolder;
+}
+
 .menu-barras{
   margin-top: 30px;
   margin-right: 25px;
@@ -257,10 +267,10 @@
 .menu-edit-delete{
   position: absolute;
   z-index: 1;
-  margin-left: -10%;
+  margin-left: -9%;
   margin-top: -35px;
-  background: linear-gradient(180deg, #FFFFFF 0%, #DFDFDF 99.99%, rgba(255, 255, 255, 0) 100%);
-  border: 1px solid rgb(129, 241, 104);
+  border: 1px solid rgb(166, 168, 166);
+  box-shadow: 0px 4px 12px rgb(216, 216, 213);
 }
 
 .list-comment{
@@ -275,6 +285,15 @@
 #icon-comment{
   margin-right: 25px;
   font-size: 20px;
+}
+
+.icon-save{
+  font-size: 20px;
+  margin-right: 10px;
+}
+
+.icon-save:hover{
+  font-size: 25px;
 }
 
 .text-comment{
@@ -327,7 +346,7 @@
 .date-post{
   display: flex;
   width: 100%;
-  margin-top: -15px;
+  margin-top: -17px;
   margin-left: 18%;
   text-align: start;
 }
@@ -469,10 +488,15 @@ form{
 .text-post, .textareaEdit{
   width: 90%;
   border-radius: 10px;
+  border:none;
   font-size: 25px;
   text-align: center;
   align-items: center;
   font-family: 'Bellota Text', cursive;
+}
+
+.text-edit{
+  border: 2px dotted rgb(143, 146, 142);
 }
 
 .field{
@@ -481,6 +505,7 @@ form{
   width: 70%;
   height:30px;
   border: 1px double rgb(122, 120, 120);
+  background-color: white;
 }
 
 .list-color{
@@ -562,7 +587,7 @@ a{
     border-radius: 50px;
     float: left;
     margin-right: 15px;
-    margin-top: 4px;
+    margin-top: 5px;
 }
 
 .display-flex-column, .input-post,.template-post {
@@ -570,7 +595,7 @@ a{
   align-items: center;
 }
 
-textarea{
+.textarea-post{
   width: 90%;
   height: 150px;
   margin-top: 10px;

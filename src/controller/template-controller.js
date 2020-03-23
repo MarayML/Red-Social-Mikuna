@@ -7,36 +7,46 @@ import { paintComment } from '../view/comment.js';
 
 export const deletePostEvent = (event) => {
   event.preventDefault();
-  const btnDelete = event.target; // hay muchos iconos delete
+  const btnDelete = event.target;
+  const menu = btnDelete.closest('.menu-edit-delete');
   const postId = btnDelete.closest('.container-posts').id;
-  const userId = btnDelete.closest('.container-posts').querySelector('.header-post').id;
-  if (currentUser().id === userId) {
-    deletePost(postId)
-      .then(() => {
-        window.location.hash = '#/mikuna';
-        // console.log(doc);
-      })
-      .catch(() => {
-        // console.log(error);
-      });
-  }
-};
-export const editPostEvent = () => {
-  // e.preventDefault();
-  // const idPost = btnEdit.closest('.container-posts').id;
-  // console.log(e);
-  document.querySelector('#edit-text-post').innerHTML = document.querySelector('.text-post').textContent;
+  deletePost(postId).then(() => {
+    menu.classList.add('hide');
+    window.location.hash = '#/mikuna';
+  }).catch((error) => {
+    alert(error.messaje);
+  });
 };
 
-export const savePostEvent = (idPost) => {
-  const newText = document.querySelector('.textareaEdit').value;
-  // console.log(idPost);
-  editPost(idPost, newText)
-    .then(() => {
-      // console.log('se actualizo!', doc);
+export const editPostEvent = (event) => {
+  event.preventDefault();
+  const btnEdit = event.target;
+  const menu = btnEdit.closest('.menu-edit-delete');
+  const postId = btnEdit.closest('.container-posts').id;
+  const post = document.getElementById(postId);
+  const texto = post.querySelector('.text-post');
+  const save = post.querySelector('.icon-save');
+  texto.removeAttribute('readonly');
+  texto.classList.add('text-edit');
+  menu.classList.add('hide');
+  save.classList.remove('hide');
+}
+
+export const savePostEvent = (event) => {
+  event.preventDefault();
+  const btnSave = event.target;
+  const postId = btnSave.closest('.container-posts').id;
+  const post = document.getElementById(postId);
+  const save = post.querySelector('.icon-save');
+  const texto = post.querySelector('.text-post');
+  editPost(postId, texto.value)
+    .then((response) => {
+      save.classList.add('hide');
+      texto.setAttribute('readonly',true);
+      texto.classList.remove('text-edit');
     })
-    .catch(() => {
-      // console.log('falló', error);
+    .catch((error) => {
+      alert(error.message);
     });
 };
 
@@ -51,13 +61,6 @@ export const privacityPostEvent = (event) => {
   else value = 'Private';
   updatePostPrivacity(postId, value);
 };
-
-/*
-export const privacityPostEvent = (event) => {
-  const postId = event.target.closest('.container-posts').id;
-  const value = event.target[event.target.value].innerText;
-  updatePostPrivacity(postId, 'privacity', value);
-}; */
 
 export const likePostEvent = (event) => {
   const postId = event.target.closest('.container-posts').id;

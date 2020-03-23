@@ -1,6 +1,7 @@
 import {
   deletePostEvent, likePostEvent, ownerPost, privacityPostEvent,
   showCommentEvent, paintLikes, menuPostEvent, saveCommentEvent,
+  editPostEvent, savePostEvent,
 } from '../controller/template-controller.js';
 
 export const paintPost = (userPost, idPost) => {
@@ -25,9 +26,9 @@ export const paintPost = (userPost, idPost) => {
     <i class="fas fa-bars" id = icon-barra></i>
     <nav name = 'hide' class = "menu-edit-delete hide" id = nav-${idPost}>
       <ul class = ul-edit-delete>
-      <li><i class="fas fa-edit margin-left" id = "icon-edit-post"></i> Editar</li>
+      <li id = "icon-edit-post"><i class="fas fa-edit margin-left"></i> Editar</li>
       <span class="line-horizontal"></span>
-      <li><i class="fas fa-trash-alt margin-left" id="icon-delete-post"></i> Eliminar</li>
+      <li id="icon-delete-post"><i class="fas fa-trash-alt margin-left"></i> Eliminar</li>
     </ul>      
   </nav>
     </div>
@@ -35,12 +36,14 @@ export const paintPost = (userPost, idPost) => {
     <div class = date-post><h1>${datePost}<h1>
     <h6 class = text-likes>Likes ${userPost.likes.length}</h6>
     </div>
-    <p class = text-post>${userPost.contentPost}</p>
+    <textarea readonly class = text-post>${userPost.contentPost}</textarea>
     <section class = footer-post>
     <div class = div-likes>
     <i class="far fa-thumbs-up margin-left ${(paintLikes(userPost)) ? 'selected' : ''}" id = "icon-like"></i>
     </div>
-    <div><i id = "icon-comment" class="far fa-comments"></i>
+    <div>
+    <span class = "icon-save hide"><i class="far fa-save"></i></span>
+    <i id = "icon-comment" class="far fa-comments"></i>
     <nav name = 'hide' class = "list-comment hide" id = comment-${idPost}>
     <ul class = ul-comments>
     <li><input type="text" name="lastname" class = text-comment id = li-${idPost}><i class="far fa-save save-comment"></i></li>
@@ -63,29 +66,9 @@ export const paintPost = (userPost, idPost) => {
   container.querySelector('#icon-delete-post').addEventListener('click', deletePostEvent);
   container.querySelector('#icon-comment').addEventListener('click', showCommentEvent);
   container.querySelector('.save-comment').addEventListener('click', saveCommentEvent);
-
-  /*  container.querySelector('#icon-save-post').addEventListener('click', (event) => {
-    event.preventDefault();
-    savePostEvent(idPost);
-  }); */
+  container.querySelector('#icon-edit-post').addEventListener('click', editPostEvent);
+  container.querySelector('.icon-save').addEventListener('click', savePostEvent);
 
 
-  // container.querySelector('#icon-edit-post').addEventListener('click', editPostEvent);
-  container.querySelector('#icon-edit-post').addEventListener('click', (e) => {
-    e.preventDefault();
-    const btnEdit = e.target;
-    const postId = btnEdit.closest('.container-posts').id;
-    const divTextareaPost = document.createElement('div');
-    divTextareaPost.innerHTML = '';
-    const textareaPost = `
-        <textarea class='textareaEdit' id='edit-text-post'></textarea>
-        `;
-    divTextareaPost.innerHTML = textareaPost;
-    divTextareaPost.querySelector('textarea#edit-text-post').value = userPost.contentPost;
-    document.querySelector(`#${postId}`).appendChild(divTextareaPost);
-    document.querySelector('.text-post').classList.add('hide');
-    document.querySelector('.textareaEdit').classList.remove('hide');
-    // editPostEvent(e);
-  });
   return container;
 };
