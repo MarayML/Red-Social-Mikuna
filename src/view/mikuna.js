@@ -19,6 +19,7 @@ export default (userData) => {
   <img class="photo-current-user" src='${userData.photoUser}'>
       <h2>${userData.nameUser}</h2>
       <p>Cumplea&ntildeos: ${userData.birthUser}<p>
+      <p>Color: <span class = text${userData.colorUser}>${userData.colorUser}</span> <p>
       <p>Ocupaci&oacute;n: ${userData.ocupacionUser}<p>
       <p>Email: ${userData.emailUser}<p>
   <button class = "btn-cerrar-sesion">Cerrar Sesión</button>

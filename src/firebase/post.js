@@ -5,6 +5,7 @@ export const savePost = (user, userId, content, type) => firebase.firestore()
     uidUser: userId,
     nameUser: user.nameUser,
     photoUser: user.photoUser,
+    colorUser: user.colorUser,
     contentPost: content,
     likes: [],
     privacity: type,
@@ -27,6 +28,7 @@ export const createUserCollection = (userData) => {
       nameUser: (userData.nameUser === null) ? 'An&oacute;nimo' : userData.nameUser,
       photoUser: (userData.photoUser === null) ? './image/photo.png' : userData.photoUser,
       birthUser: (userData.birthUser === null) ? '' : userData.birthUser,
+      colorUser: userData.colorUser,
       ocupacionUser: userData.ocupacionUser,
       emailUser: userData.emailUser,
     });

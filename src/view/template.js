@@ -6,13 +6,14 @@ import {
 export const paintPost = (userPost, idPost) => {
   const container = document.createElement('div');
   container.classList.add('container-posts');
+  container.classList.add(userPost.colorUser);
   container.id = idPost;
   let datePost = userPost.publicationDate.toDate().toString();
   datePost = datePost.substring(0, datePost.indexOf('GMT'));
   const autorPost = ownerPost(userPost);
   container.innerHTML = '';
   const template = `<section class = header-post id="${userPost.uidUser}">
-    <div class = header-name-photo>
+    <div class = "header-name-photo">
     <img class="post-user-photo" src="${userPost.photoUser}">
     <h2 class = user-name-post>${userPost.nameUser}<h2>
     <div class = ${(autorPost === 0) ? 'hide' : 'icon-privacity'}>

@@ -12,6 +12,15 @@ export default () => {
   <form>
   <input type="text" name = "Name" id = "input-name" placeholder= "  Name" class="field"><br><br>
   <input type="text" class="field" id="input-birth" placeholder= "  Fecha de nacimiento" onfocus="(this.type='date')" onblur="(this.type='text')"><br><br>
+  <select class = "field list-color" name="list_color">
+	<option>Color preferido</option>
+	<option>Azul</option>
+  <option>Rojo</option>
+  <option>Morado</option>
+  <option>Amarillo</option>
+  <option>Rosado</option>
+  <option>Naranja</option>
+  </select><br><br>
   <input type="text" name = "Ocupacion" id = "input-ocupacion" placeholder= "  Ocupacion" class="field"><br><br>
   <input type="email" name = "Correo" id = "input-email" placeholder= "  Email" class="field"><br><br>
   <input type="password" name = "Contraseña" id = "field-password" placeholder="  Password" class="field"> 

@@ -8,6 +8,10 @@ export const registerLogEvent = (event) => {
   event.preventDefault();
   const name = document.querySelector('#input-name');
   const birth = document.querySelector('#input-birth');
+  const colorIndex = document.querySelector('.list-color').options.selectedIndex; 
+  const color = document.querySelector('.list-color').options[colorIndex].text;
+  console.log(color);  
+  if(color === 'Color preferido') color = 'Verde';
   const ocupacion = document.querySelector('#input-ocupacion');
   const email = document.querySelector('#input-email');
   const password = document.querySelector('#field-password');
@@ -18,9 +22,11 @@ export const registerLogEvent = (event) => {
       nameUser: name.value,
       photoUser: './image/photo.png',
       birthUser: birth.value,
+      colorUser: color,
       ocupacionUser: ocupacion.value,
       emailUser: email.value,
     };
+    console.log(userData);    
     createUserCollection(userData);
     window.location.hash = '#/mikuna';
   })

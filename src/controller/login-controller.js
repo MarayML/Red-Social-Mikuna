@@ -11,6 +11,7 @@ export const facebookLoginEvent = (event) => {
         nameUser: response.user.displayName,
         photoUser: response.user.photoURL,
         birthUser: '',
+        colorUser:'Verde',
         ocupacionUser: '',
         emailUser: response.user.email,
       };
@@ -29,6 +30,7 @@ export const googleLoginEvent = (event) => {
       nameUser: response.user.displayName,
       photoUser: response.user.photoURL,
       birthUser: '',
+      colorUser:'Verde',
       ocupacionUser: '',
       emailUser: response.user.email,
     };
