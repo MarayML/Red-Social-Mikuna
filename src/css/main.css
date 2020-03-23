@@ -277,9 +277,11 @@
   position: absolute;
   z-index: 1;
   width: 300px;
-  border: 1px solid red;
-  margin-left: -23%;
-  margin-top: -35px;
+  margin-left: -21%;
+  margin-top: -1%;
+  background-color: white;
+  border: 1px solid rgb(166, 168, 166);
+  box-shadow: 0px 4px 12px rgb(216, 216, 213);
 }
 
 #icon-comment{
@@ -298,10 +300,12 @@
 
 .text-comment{
   border-radius: 20px;
+  padding-left: 10px;
   width: 85%;
   height: 25px;
   margin-right: 8px;
-  border-color: #58FF33;
+  margin-bottom: 5px;
+  border: 1px solid rgb(107, 109, 106);
 }
 
 .save-comment{

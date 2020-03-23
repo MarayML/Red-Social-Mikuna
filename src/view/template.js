@@ -46,7 +46,7 @@ export const paintPost = (userPost, idPost) => {
     <i id = "icon-comment" class="far fa-comments"></i>
     <nav name = 'hide' class = "list-comment hide" id = comment-${idPost}>
     <ul class = ul-comments>
-    <li><input type="text" name="lastname" class = text-comment id = li-${idPost}><i class="far fa-save save-comment"></i></li>
+    <li><input type="text" name="lastname" class = text-comment id = li-${idPost}><i class="far fa-paper-plane save-comment"></i></li>
     <span class="line-horizontal"></span>
     <ul id = ul-${idPost}>
     </ul>
