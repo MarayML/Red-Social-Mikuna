@@ -19,7 +19,6 @@ export const createPostEvent = (event) => {
   const type = contentForPost.getAttribute('name');
   const userId = currentUser().id;
   getUserById(userId).then((user) => {
-    console.log(type);    
     savePost(user.data(), userId, contentForPost.value, type).then(() => {
       contentForPost.value = '';
       window.location.hash = '#/mikuna';

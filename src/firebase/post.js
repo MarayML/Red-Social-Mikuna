@@ -12,11 +12,11 @@ export const savePost = (user, userId, content, type) => firebase.firestore()
     publicationDate: new Date(),
   });
 
-export const saveComment = (user, idpost, contentC) => firebase.firestore().collection('comments')
+export const saveComment = (userId, user, idpost, contentC) => firebase.firestore().collection('comments')
   .add({
-    uidUser: user.id,
-    nameUser: user.name,
-    photoUser: user.photo,
+    uidUser: userId,
+    nameUser: user.nameUser,
+    photoUser: user.photoUser,
     idPost: idpost,
     content: contentC,
   });

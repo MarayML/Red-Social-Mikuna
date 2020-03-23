@@ -1,6 +1,7 @@
 /* eslint-disable no-console */
 import {
-  deletePost, getPostById, updatePostPrivacity, updatePostLike, editPost, saveComment, getComment,
+  deletePost, getPostById, updatePostPrivacity, updatePostLike, 
+  editPost, saveComment, getComment,getUserById,
 } from '../firebase/post.js';
 import { currentUser } from '../firebase/auth.js';
 import { paintComment } from '../view/comment.js';
@@ -42,7 +43,7 @@ export const savePostEvent = (event) => {
   editPost(postId, texto.value)
     .then((response) => {
       save.classList.add('hide');
-      texto.setAttribute('readonly',true);
+      texto.setAttribute('readonly', true);
       texto.classList.remove('text-edit');
     })
     .catch((error) => {
@@ -126,7 +127,13 @@ export const showCommentEvent = (event) => {
 export const saveCommentEvent = (event) => {
   event.preventDefault();
   const postId = event.target.closest('.container-posts').id;
-  const id = `#li-${postId}`;
-  const comment = document.querySelector(id);
-  saveComment(currentUser(), postId, comment.value);
-};
+  const post = document.getElementById(postId);
+  const comment = post.querySelector('.text-comment');
+  //  const id = `#li-${postId}`;
+  //  const comment = document.querySelector(id);
+  const userId = currentUser().id;
+  getUserById(userId).then((user) => {
+  saveComment(userId, user.data(), postId, comment.value);
+  comment.value = '';
+  }).catch((error) => alert(error.message))
+  };
