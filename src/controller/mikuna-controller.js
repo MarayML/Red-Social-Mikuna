@@ -1,5 +1,5 @@
 /* eslint-disable no-console */
-import { getPost, savePost } from '../firebase/post.js';
+import { getPost, savePost, getUserById } from '../firebase/post.js';
 import { currentUser, signOut } from '../firebase/auth.js';
 import { paintPost } from '../view/template.js';
 
@@ -17,10 +17,20 @@ export const createPostEvent = (event) => {
   event.preventDefault();
   const contentForPost = document.querySelector('#content-for-post');
   const type = contentForPost.getAttribute('name');
-  const user = currentUser();
-  savePost(user, contentForPost.value, type).then(() => {
-    window.location.hash = '#/mikuna';
-  }).catch((error) => console.log(error));
+  const userId = currentUser().id;
+  getUserById(userId).then((user) => {
+    console.log(type);    
+    savePost(user.data(), userId, contentForPost.value, type).then(() => {
+      contentForPost.value = '';
+      window.location.hash = '#/mikuna';
+    }).catch((error) => {
+      alert(error.message);
+      console.log('primera promesa');      
+    });
+  }).catch((error) => {
+    alert(error.message);
+    console.log('segunda promesa');      
+  });
 };
 
 // llamada a repintar la red social

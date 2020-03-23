@@ -18,8 +18,9 @@ export default (userData) => {
   <section class="social-perfil">
   <img class="photo-current-user" src='${userData.photoUser}'>
       <h2>${userData.nameUser}</h2>
-      <p>${userData.ocupacionUser}<p>
-      <p>${userData.emailUser}<p>
+      <p>Cumplea&ntildeos: ${userData.birthUser}<p>
+      <p>Ocupaci&oacute;n: ${userData.ocupacionUser}<p>
+      <p>Email: ${userData.emailUser}<p>
   <button class = "btn-cerrar-sesion">Cerrar Sesión</button>
   </section>
   <section class= "social-post">
@@ -27,7 +28,7 @@ export default (userData) => {
   <div class = header-private>
   <button class="btn-privacy" data-privacy='0'>Privacidad</button><span class = "icon-arrow"><i class="fas fa-caret-down"></i></span>
     <ul name = "hide" class = "ul-private hide">
-    <li class="icon-privacity" id="icon-public"><i class="fas fa-lock-open"></i> Publico</li>
+    <li class="icon-privacity" id="icon-public"><i class="fas fa-lock-open"></i> P&uacute;blico</li>
     <span class="line-horizontal"></span>
     <li class="icon-privacity" id="icon-private"><i class="fas fa-lock"></i> Solo yo</li>
     </ul>

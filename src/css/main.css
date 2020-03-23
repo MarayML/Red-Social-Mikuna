@@ -92,7 +92,18 @@
   align-items: center;
 }
 
+.social-perfil h2{
+  margin-bottom: 30px;
+}
+
+.social-perfil p{
+  font-family: 'Indie Flower', cursive;
+  font-size: 20px;
+  margin-top: -17px;
+}
+
 .input-post{
+  margin-top:-50px;
   margin-bottom: 10px;
   width: 90%;
   border: 1px solid #58FF33;
@@ -101,7 +112,6 @@
   justify-content: center;
   text-align: center;
   align-items: center;
-  background: url('./image/post.jpg') cover;
 }
 
 #content-for-post{
@@ -109,11 +119,12 @@
   border-radius: 10px;
   text-align: center;
   padding: 5px;
+  font-family: 'Baloo Chettan 2', cursive;
+  font-size: 16px;
 }
 
 .social-post{
   width: 60%;
-  margin-top: 0px;
   padding-top: 0px;
   display: flex;
   flex-direction: column;
@@ -124,7 +135,7 @@
 
 .container-list-posts{
   width: 100%;
-  margin-bottom: 20px;
+  margin-top: 50px;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -133,13 +144,11 @@
 }
 
 .container-posts{
-  margin-bottom: 20px;
-  margin-top: 20px;
+  margin-bottom: 50px;
   width: 90%;
-  border: 1px solid #58FF33;
-  background: linear-gradient(180deg, #FFFFFF 0%, #DFDFDF 99.99%, rgba(255, 255, 255, 0) 100%);  
+  border: 1px solid rgb(178, 180, 178);
   border-radius: 10px;
-  box-shadow: 0px 4px 12px #58FF33;
+  box-shadow: 0px 4px 12px rgb(142, 143, 142);
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -155,12 +164,24 @@
   justify-content: space-between;
 }
 
+.subheader-post{
+  width: 40%;
+  margin-top: 5px;
+  margin-left: 5px;
+  border-radius: 10px;
+  background-color: #58FF33;
+}
+
 .header-name-photo{
-  width: 50%;
-  margin-left: 15px;
+  width: 40%;
+  margin-top: 5px;
+  margin-left: 5px;
+  padding-left: 5px;
+  border-radius: 10px;
   display: flex;
   text-align: center;
   align-items: center;
+  background-color: chartreuse;
 }
 
 .icon-privacity{
@@ -249,9 +270,9 @@
 
 .date-post{
   display: flex;
-  width: 80%;
-  margin-left: 20px;
-  margin-top: -30px;
+  width: 100%;
+  margin-top: -5px;
+  margin-left: 35px;
   text-align: start;
 }
 
@@ -296,8 +317,8 @@
 .text-likes{
   margin: 0px;
   margin-left: 17px;
+  margin-top: 15px;
   font-size: 14px;
-  width: 80%;
   text-align: left;
 }
 
@@ -363,7 +384,7 @@
 
 .user-name-post{
   font-size: 15px;
-  padding: 5px;
+  padding-right: 10px;
 }
 
 h5, h2, h1, .user-name-post {
@@ -394,7 +415,7 @@ form{
   font-size: 25px;
   text-align: center;
   align-items: center;
-  font-family: 'Indie Flower', cursive;
+  font-family: 'Bellota Text', cursive;
 }
 
 .field{
@@ -476,7 +497,7 @@ a{
     border-radius: 50px;
     float: left;
     margin-right: 15px;
-    margin-top: 30px;
+    margin-top: 4px;
 }
 
 .display-flex-column, .input-post,.template-post {

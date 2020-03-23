@@ -1,10 +1,10 @@
 
-export const savePost = (user, content, type) => firebase.firestore()
+export const savePost = (user, userId, content, type) => firebase.firestore()
   .collection('posts')
   .add({
-    uidUser: user.id,
-    nameUser: user.name,
-    photoUser: user.photo,
+    uidUser: userId,
+    nameUser: user.nameUser,
+    photoUser: user.photoUser,
     contentPost: content,
     likes: [],
     privacity: type,
@@ -24,7 +24,7 @@ export const saveComment = (user, idpost, contentC) => firebase.firestore().coll
 export const createUserCollection = (userData) => {
   firebase.firestore().collection('users').doc(userData.idUser)
     .set({
-      nameUser: (userData.nameUser === null) ? 'Anonimo' : userData.nameUser,
+      nameUser: (userData.nameUser === null) ? 'An&oacute;nimo' : userData.nameUser,
       photoUser: (userData.photoUser === null) ? './image/photo.png' : userData.photoUser,
       birthUser: (userData.birthUser === null) ? '' : userData.birthUser,
       ocupacionUser: userData.ocupacionUser,

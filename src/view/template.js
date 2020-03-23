@@ -31,8 +31,9 @@ export const paintPost = (userPost, idPost) => {
   </nav>
     </div>
     </section>
-    <div class = date-post><h1>${datePost}<h1></div>
+    <div class = date-post><h1>${datePost}<h1>
     <h6 class = text-likes>Likes ${userPost.likes.length}</h6>
+    </div>
     <p class = text-post>${userPost.contentPost}</p>
     <section class = footer-post>
     <div class = div-likes>
