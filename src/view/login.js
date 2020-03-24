@@ -26,7 +26,7 @@ export const viewLogin = () => {
     <p>O bien ingresa con...<p>
     </form>  
     <div class = "btn-fb-google">
-      <a id="icon-facebook" href="#"><i class="fab fa-facebook icon-face"></i></a>
+      <a id="icon-facebook" disable><i class="fab fa-facebook icon-face"></i></a>
       <a id="icon-google" href="#"><i class="fab fa-google-plus icon-google"></i></a>   
     </div>  
     <p>¿No tienes una cuenta?&nbsp;<a href="#/register" id="registrate">Regístrate.</a></p>
@@ -35,7 +35,7 @@ export const viewLogin = () => {
 
   logContainer.innerHTML = loginTemplate;
   //  eventos
-  logContainer.querySelector('#icon-facebook').addEventListener('click', facebookLoginEvent);
+  //logContainer.querySelector('#icon-facebook').addEventListener('click', facebookLoginEvent);
   logContainer.querySelector('#icon-google').addEventListener('click', googleLoginEvent);
   logContainer.querySelector('button[type = "submit"]').addEventListener('click', emailLoginEvent);
   logContainer.querySelector('#icon-notshow-password').addEventListener('click', hidePassword);

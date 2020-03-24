@@ -44,7 +44,15 @@ export const getComment = (postId) => firebase.firestore().collection('comments'
 export const getPostById = (idPost) => firebase.firestore().collection('posts').doc(idPost).get();
 
 // borrar post
-export const deletePost = (idPost) => firebase.firestore().collection('posts').doc(idPost).delete();
+export const deletePost = (idPost) => {
+  firebase.firestore().collection('posts').doc(idPost).delete();
+  firebase.firestore().collection('comments').where('idPost','==',idPost)
+  .get().then(function(querySnapshot) {
+  querySnapshot.forEach(function(doc) {
+    doc.ref.delete();
+  });
+}); 
+}
 // editar post
 export const editPost = (idPost, newText) => firebase.firestore().collection('posts').doc(idPost).update({
   contentPost: newText,

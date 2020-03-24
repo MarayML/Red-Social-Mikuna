@@ -36,7 +36,8 @@ export const paintPost = (userPost, idPost) => {
     <div class = date-post><h1>${datePost}<h1>
     <h6 class = text-likes>Likes ${userPost.likes.length}</h6>
     </div>
-    <textarea readonly class = text-post>${userPost.contentPost}</textarea>
+    <p id = "ptexto" class = "text-post">${userPost.contentPost}</p>
+    <textarea id = "areatexto" class = "text-post text-edit hide">${userPost.contentPost}</textarea>
     <section class = footer-post>
     <div class = div-likes>
     <i class="far fa-thumbs-up margin-left ${(paintLikes(userPost)) ? 'selected' : ''}" id = "icon-like"></i>
@@ -68,7 +69,5 @@ export const paintPost = (userPost, idPost) => {
   container.querySelector('.save-comment').addEventListener('click', saveCommentEvent);
   container.querySelector('#icon-edit-post').addEventListener('click', editPostEvent);
   container.querySelector('.icon-save').addEventListener('click', savePostEvent);
-
-
   return container;
 };

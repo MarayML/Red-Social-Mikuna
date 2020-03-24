@@ -25,10 +25,11 @@ export const editPostEvent = (event) => {
   const menu = btnEdit.closest('.menu-edit-delete');
   const postId = btnEdit.closest('.container-posts').id;
   const post = document.getElementById(postId);
-  const texto = post.querySelector('.text-post');
+  const ptexto = post.querySelector('#ptexto');
+  const areatexto = post.querySelector('#areatexto');
   const save = post.querySelector('.icon-save');
-  texto.removeAttribute('readonly');
-  texto.classList.add('text-edit');
+  ptexto.classList.add('hide');
+  areatexto.classList.remove('hide');
   menu.classList.add('hide');
   save.classList.remove('hide');
 }
@@ -39,12 +40,14 @@ export const savePostEvent = (event) => {
   const postId = btnSave.closest('.container-posts').id;
   const post = document.getElementById(postId);
   const save = post.querySelector('.icon-save');
-  const texto = post.querySelector('.text-post');
-  editPost(postId, texto.value)
+  const ptexto = post.querySelector('#ptexto');
+  const areatexto = post.querySelector('#areatexto');
+  editPost(postId, areatexto.value)
     .then((response) => {
       save.classList.add('hide');
-      texto.setAttribute('readonly', true);
-      texto.classList.remove('text-edit');
+      areatexto.classList.add('hide');
+      ptexto.value = areatexto.value;
+      ptexto.classList.remove('hide');
     })
     .catch((error) => {
       alert(error.message);

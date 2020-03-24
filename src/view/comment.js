@@ -11,6 +11,7 @@ export const paintComment = (post) => {
   <div>
   <textarea readonly>${post.content}</textarea>
   </div>
+  <div><i class="fa fa-trash-alt"></i></div>
   `;
   container.innerHTML = template;
   document.querySelector(id).appendChild(container);
