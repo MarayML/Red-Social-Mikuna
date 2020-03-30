@@ -17,7 +17,7 @@ export const createPostEvent = (event) => {
   event.preventDefault();
   const contentForPost = document.querySelector('#content-for-post');
   const type = contentForPost.getAttribute('name');
-  const userId = currentUser().id;
+  const userId = currentUser();
   getUserById(userId).then((user) => {
     savePost(user.data(), userId, contentForPost.value, type).then(() => {
       contentForPost.value = '';

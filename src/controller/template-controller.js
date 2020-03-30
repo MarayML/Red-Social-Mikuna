@@ -1,7 +1,7 @@
 /* eslint-disable no-console */
 import {
-  deletePost, getPostById, updatePostPrivacity, updatePostLike, 
-  editPost, saveComment, getComment,getUserById,
+  deletePost, getPostById, updatePostPrivacity, updatePostLike,
+  editPost, saveComment, getComment, getUserById, updatePostComment,
 } from '../firebase/post.js';
 import { currentUser } from '../firebase/auth.js';
 import { paintComment } from '../view/comment.js';
@@ -54,8 +54,9 @@ export const savePostEvent = (event) => {
     });
 };
 
-export const ownerPost = (userPost) => ((userPost.uidUser === currentUser().id) ? 1 : 0);
+export const ownerPost = (userPost) => ((userPost.uidUser === currentUser()) ? true : false);
 
+export const doComment = (userPost) => (userPost.comment.includes(currentUser()) ? true : false);
 
 export const privacityPostEvent = (event) => {
   // eslint-disable-next-line no-unused-vars
@@ -68,7 +69,7 @@ export const privacityPostEvent = (event) => {
 
 export const likePostEvent = (event) => {
   const postId = event.target.closest('.container-posts').id;
-  const idUser = currentUser().id;
+  const idUser = currentUser();
   getPostById(postId)
     .then((doc) => {
       let arrayLike = doc.data().likes;
@@ -82,7 +83,7 @@ export const likePostEvent = (event) => {
 };
 
 export const paintLikes = (userPost) => {
-  if (userPost.likes.includes(currentUser().id)) return true;
+  if (userPost.likes.includes(currentUser())) return true;
   return false;
 };
 
@@ -106,8 +107,8 @@ const paintCommentEvent = (postId) => {
   getComment(postId)
     .onSnapshot((querySnapshot) => {
       document.querySelector(id).innerHTML = ' ';
-      querySnapshot.forEach((post) => {
-        paintComment(post.data());
+      querySnapshot.forEach((comment) => {
+        paintComment(comment.data(), comment.id);
       });
     });
 };
@@ -117,13 +118,11 @@ export const showCommentEvent = (event) => {
   const postId = event.target.closest('.container-posts').id;
   const id = `#comment-${postId}`;
   const element = document.querySelector(id);
-  if (element.getAttribute('name') === 'hide') {
+  if (element.classList.value.includes('hide')) {
     element.classList.remove('hide');
-    element.setAttribute('name', 'show');
     paintCommentEvent(postId);
   } else {
     element.classList.add('hide');
-    element.setAttribute('name', 'hide');
   }
 };
 
@@ -132,11 +131,16 @@ export const saveCommentEvent = (event) => {
   const postId = event.target.closest('.container-posts').id;
   const post = document.getElementById(postId);
   const comment = post.querySelector('.text-comment');
-  //  const id = `#li-${postId}`;
-  //  const comment = document.querySelector(id);
-  const userId = currentUser().id;
+  const userId = currentUser();
   getUserById(userId).then((user) => {
-  saveComment(userId, user.data(), postId, comment.value);
-  comment.value = '';
+    saveComment(userId, user.data(), postId, comment.value);
+    comment.value = '';
+    getPostById(postId).then((doc) => {
+      let arrayComment = doc.data().comment;
+      if (!arrayComment.includes(userId)) {
+        arrayComment.push(userId);
+      }
+      updatePostComment(postId, arrayComment);
+    });
   }).catch((error) => alert(error.message))
-  };
+};

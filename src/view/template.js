@@ -1,28 +1,28 @@
 import {
   deletePostEvent, likePostEvent, ownerPost, privacityPostEvent,
   showCommentEvent, paintLikes, menuPostEvent, saveCommentEvent,
-  editPostEvent, savePostEvent,
+  editPostEvent, savePostEvent, doComment,
 } from '../controller/template-controller.js';
 
 export const paintPost = (userPost, idPost) => {
   const container = document.createElement('div');
   container.classList.add('container-posts');
   container.classList.add(userPost.colorUser);
+  const textColor = 'text'+ userPost.colorUser
   container.id = idPost;
   let datePost = userPost.publicationDate.toDate().toString();
   datePost = datePost.substring(0, datePost.indexOf('GMT'));
-  const autorPost = ownerPost(userPost);
   container.innerHTML = '';
   const template = `<section class = header-post id="${userPost.uidUser}">
     <div class = "header-name-photo">
     <img class="post-user-photo" src="${userPost.photoUser}">
     <h2 class = user-name-post>${userPost.nameUser}<h2>
-    <div class = ${(autorPost === 0) ? 'hide' : 'icon-privacity'}>
+    <div class = ${(ownerPost(userPost)) ? 'icon-privacity' : 'hide'}>
     <span class = ${(userPost.privacity === 'Public') ? 'hide' : ''} ><i class="fas fa-lock" id = icon-private></i></span>
     <span class = ${(userPost.privacity === 'Private') ? 'hide' : ''}><i class="fas fa-lock-open" id = icon-not-private></i></span>
     </div>
     </div>
-    <div class = ${(autorPost === 0) ? 'hide' : 'menu-barras'}>
+    <div class = ${(ownerPost(userPost)) ? 'menu-barras' : 'hide'}>
     <i class="fas fa-bars" id = icon-barra></i>
     <nav name = 'hide' class = "menu-edit-delete hide" id = nav-${idPost}>
       <ul class = ul-edit-delete>
@@ -40,14 +40,14 @@ export const paintPost = (userPost, idPost) => {
     <textarea id = "areatexto" class = "text-post text-edit hide">${userPost.contentPost}</textarea>
     <section class = footer-post>
     <div class = div-likes>
-    <i class="far fa-thumbs-up margin-left ${(paintLikes(userPost)) ? 'selected' : ''}" id = "icon-like"></i>
+    <i class="far fa-thumbs-up margin-left ${(paintLikes(userPost)) ? textColor : ''}" id = "icon-like"></i>
     </div>
     <div>
     <span class = "icon-save hide"><i class="far fa-save"></i></span>
-    <i id = "icon-comment" class="far fa-comments"></i>
+    <i id = "icon-comment" class="far fa-comments ${(doComment(userPost)) ? textColor : ''}"></i>
     <nav name = 'hide' class = "list-comment hide" id = comment-${idPost}>
     <ul class = ul-comments>
-    <li><input type="text" name="lastname" class = text-comment id = li-${idPost}><i class="far fa-paper-plane save-comment"></i></li>
+    <li><input type="text" name="lastname" maxlength="30" class = "text-comment" id = li-${idPost}><i class="far fa-paper-plane save-comment"></i></li>
     <span class="line-horizontal"></span>
     <ul id = ul-${idPost}>
     </ul>

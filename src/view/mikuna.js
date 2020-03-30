@@ -1,11 +1,9 @@
 import {
   createPostEvent, paintMikunaPost, iconPrivateEvent, iconsignOutEvent, showMenuPrivacity
 } from '../controller/mikuna-controller.js';
-import { currentUser } from '../firebase/auth.js';
 
 export default (userData) => {
   // eslint-disable-next-line no-console
-  const user = currentUser();
   const mikunaMain = document.createElement('div');
   const postTemplate = `
   <nav class = "nav-bar">
@@ -46,7 +44,7 @@ export default (userData) => {
    `;
 
   mikunaMain.innerHTML = postTemplate;
-  paintMikunaPost(user);
+  paintMikunaPost(userData.idUser);
   mikunaMain.querySelector('#button-create-post').addEventListener('click', createPostEvent);
   mikunaMain.querySelectorAll('.icon-privacity').forEach((icon) => icon.addEventListener('click', iconPrivateEvent));
   mikunaMain.querySelector('.btn-cerrar-sesion').addEventListener('click', iconsignOutEvent);

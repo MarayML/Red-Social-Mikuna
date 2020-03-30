@@ -20,6 +20,7 @@ export const viewTemplate = (router) => {
     { return logUser((idUser) => getUserById(idUser).then((response) => {
       console.log('entro');
       const userData = {
+        idUser: idUser,
         nameUser: response.data().nameUser,
         photoUser: response.data().photoUser,
         colorUser:response.data().colorUser,

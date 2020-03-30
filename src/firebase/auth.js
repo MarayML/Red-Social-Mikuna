@@ -15,16 +15,7 @@ export const facebookLog = () => firebase.auth()
   .signInWithPopup(new firebase.auth.FacebookAuthProvider());
 
 // usuario actual
-export const currentUser = () => {
-  const user = firebase.auth().currentUser;
-  const userData = {
-    id: user.uid,
-    name: (user.displayName === null) ? 'Anonimo' : user.displayName,
-    email: user.email,
-    photo: (user.photoURL === null) ? './image/photo.png' : user.photoURL,
-  };
-  return userData;
-};
+export const currentUser = () => firebase.auth().currentUser.uid;
 
 // observador usuario logueado
 export const logUser = (callback) => {

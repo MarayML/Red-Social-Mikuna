@@ -1,3 +1,4 @@
+import { currentUser } from "../firebase/auth.js";
 
 export const savePost = (user, userId, content, type) => firebase.firestore()
   .collection('posts')
@@ -8,6 +9,7 @@ export const savePost = (user, userId, content, type) => firebase.firestore()
     colorUser: user.colorUser,
     contentPost: content,
     likes: [],
+    comment: [],
     privacity: type,
     publicationDate: new Date(),
   });
@@ -17,11 +19,11 @@ export const saveComment = (userId, user, idpost, contentC) => firebase.firestor
     uidUser: userId,
     nameUser: user.nameUser,
     photoUser: user.photoUser,
+    colorUser: user.colorUser,
     idPost: idpost,
     content: contentC,
   });
 
-// salvar informacion del usuario
 export const createUserCollection = (userData) => {
   firebase.firestore().collection('users').doc(userData.idUser)
     .set({
@@ -64,8 +66,19 @@ export const updatePostLike = (idPost, value) => {
   });
 };
 
+export const updatePostComment = (idPost, value) => {
+  firebase.firestore().collection('posts').doc(idPost).update({
+    comment: value,
+  });
+};
+
 export const updatePostPrivacity = (idPost, value) => {
   firebase.firestore().collection('posts').doc(idPost).update({
     privacity: value,
   });
 };
+
+export const deleteComment = (commentId) =>   {
+  firebase.firestore().collection('comments').doc(commentId).delete();
+}
+
