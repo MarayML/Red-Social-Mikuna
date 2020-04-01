@@ -1,5 +1,5 @@
 import {
-  createPostEvent, paintMikunaPost, iconPrivateEvent, iconsignOutEvent, showMenuPrivacity
+  createPostEvent, paintMikunaPost, iconPrivateEvent, iconsignOutEvent, showMenuPrivacity, saveImageEvent,
 } from '../controller/mikuna-controller.js';
 
 export default (userData) => {
@@ -34,7 +34,8 @@ export default (userData) => {
    </div>
   <textarea class = textarea-post id = "content-for-post" name = "Public" placeholder="¿Tienes algo que contarnos?"></textarea>
   <div class = footer-input-post>
-  <div><i class="far fa-image icon-post-img"></i></div>
+  <label for = "file-upload" class = "icon-post-img"><i class="far fa-image"></i></label>
+  <input id="file-upload" type="file" style='display: none;'/>
   <button id = "button-create-post" class = "btn-publicar">Publicar</button>
   <div>
   </section>
@@ -50,5 +51,7 @@ export default (userData) => {
   mikunaMain.querySelector('.btn-cerrar-sesion').addEventListener('click', iconsignOutEvent);
   mikunaMain.querySelector('.btn-privacy').addEventListener('click', showMenuPrivacity);
   mikunaMain.querySelector('.icon-arrow').addEventListener('click', showMenuPrivacity);
+  mikunaMain.querySelector('#file-upload').addEventListener('change', saveImageEvent);
+
   return mikunaMain;
 };

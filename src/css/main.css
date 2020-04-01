@@ -428,6 +428,7 @@
   margin-left: 30px;
   font-size: 30px;
   color: rgb(86, 199, 61);
+  cursor: pointer;
 }
 
 .main-init{

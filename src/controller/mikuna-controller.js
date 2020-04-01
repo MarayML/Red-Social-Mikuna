@@ -12,6 +12,15 @@ export const showMenuPrivacity = (event) => {
     menu.classList.add('hide');
 }
 
+export const saveImageEvent = (event) =>{
+  const file = document.querySelector('#file-upload');
+  console.log(file.files[0]);
+  console.log(event);
+  
+  
+ // saveImage(file);
+}
+
 // llamada a guardar post en el database
 export const createPostEvent = (event) => {
   event.preventDefault();
