@@ -13,12 +13,12 @@ export const showMenuPrivacity = (event) => {
 }
 
 export const saveImageEvent = (event) =>{
-  const file = document.querySelector('#file-upload');
+ /* const file = document.querySelector('#file-upload');
   console.log(file.files[0]);
   console.log(event);
   
   
- // saveImage(file);
+ // saveImage(file);8*/
 }
 
 // llamada a guardar post en el database
