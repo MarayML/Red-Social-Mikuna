@@ -5,6 +5,12 @@
   text-align: center;
 }
 
+ul li {
+  list-style: none;
+  padding: 0px;
+  margin: 0px;
+}
+
 .nav-bar{
   width: 100%;
   display: flex;
@@ -45,7 +51,7 @@
   list-style: none;
   border: 1px solid orange;
   position: absolute;
-  margin-top: 45px;
+  margin-top: 48px;
   margin-left: -17px;
   background-color: white;
   border: 1px inset #58FF33;
@@ -62,6 +68,7 @@
 
 .footer-input-post{
   width: 100%;
+  height: 35px;
   margin-top: 10px;
   margin-bottom: 10px;
   display: flex;
@@ -241,12 +248,32 @@
   align-items: center;
 }
 
+.nameImg{
+  color: rgb(129, 129, 128);
+  font-weight: bolder;
+  font-size: 16px;
+  font-family: 'Sen', sans-serif;
+  padding-left: 10px;
+}
+
 .icon-privacity{
   font-size: 15px;
+  margin-top: -5px;
+}
+
+.menu-privacity{
+  font-size: 15px;
+  text-align: left;
+  padding: 2px;
+}
+
+.menu-privacity:hover{
+  color: rgb(88, 87, 87);
+  font-weight: bolder;
 }
 
 .icon-privacity:hover{
-  color: rgb(51, 179, 22);
+  color: rgb(113, 116, 112);
 }
 
 #icon-edit-post:hover{
@@ -536,7 +563,7 @@ form{
   margin-left: 20px;
 }
 
-.button, .btn-cerrar-sesion, .btn-publicar{
+.button, .btn-perfil, .btn-publicar{
   color: white;
   border: 1px solid #58FF33;
   border-radius: 15px;
@@ -548,8 +575,31 @@ form{
   text-shadow: 0.1em 0.1em 0.05em #58FF33;
 }
 
-.btn-cerrar-sesion{
-  width: 100%;
+.btn-publicar:hover{
+  background-color: white;
+  color: #58FF33;
+  text-shadow: none;
+}
+
+.button:hover{
+  background-color: white;
+  color: #58FF33;
+  text-shadow: none;
+}
+
+#btn-my-perfil{
+  margin-top: 20px;
+}
+
+.btn-perfil{
+  width: 60%;
+  margin-top: 15px;
+}
+
+.btn-perfil:hover{
+  background-color: white;
+  color: #58FF33;
+  text-shadow: none;
 }
 
 a{
@@ -633,6 +683,14 @@ a{
   color: #071085;
 }
 
+.icon-close{
+  padding-right: 5px;
+}
+
+.icon-close:hover{
+  color: #666565;
+}
+
 .background{
   background-image: url('../image/fondo.jpg');
   width: 100vw;
@@ -643,6 +701,13 @@ a{
 .btn-publicar{
   width: 20%;
   margin-left: 60%;
+  margin-right: 10px;
+}
+
+.imgPost{
+  width: 98%;
+  height: 350px;
+  margin-bottom: 10px;
 }
 
 .selected{
@@ -667,14 +732,14 @@ a{
   padding-top: 2px;
   padding-left: 2px;
   border-radius: 10px;
-  width: 95%;
+  width: 100%;
 }
 
 .header-comment{
   display: flex;
   width: 100%;
   height: 5%;
-  margin-bottom: 5px;
+  margin-bottom: 20px;
 }
 
 .user-photo-comment{
@@ -698,12 +763,3 @@ a{
   padding-left: 10px;
 }
 
-.div-comment .delete-comment{
-  margin-left: 5px;
-  margin-top: 15px;
-  font-size: 18px;
-}
-
-.delete-comment:hover{
-  color: #656665;
-}

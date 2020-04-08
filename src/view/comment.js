@@ -10,13 +10,13 @@ export const paintComment = (comment,idComment) => {
   <article class = "header-comment">
   <img class="user-photo-comment" src="${comment.photoUser}"/>
   <h6>${comment.nameUser}</h6>
+  <div class = ${(ownerComment(comment.uidUser)) ? 'icon-close' : 'hide'}><i class="fa fa-times-circle"></i></div>
   </article>
   <p>${comment.content}</p>
   </section>
-  <div class = ${(ownerComment(comment.uidUser)) ? 'delete-comment' : 'hide'}><i class="far fa-trash-alt"></i></div>
   `;
   container.innerHTML = template;
   document.querySelector(id).appendChild(container);
-  container.querySelector('.delete-comment').addEventListener('click', deleteCommentEvent);
+  container.querySelector('.icon-close').addEventListener('click', deleteCommentEvent);
 
 };

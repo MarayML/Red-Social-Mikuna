@@ -1,4 +1,5 @@
 /* eslint-disable no-console */
+import { savePostImg } from '../firebase/storage.js'
 import { getPost, savePost, getUserById } from '../firebase/post.js';
 import { currentUser, signOut } from '../firebase/auth.js';
 import { paintPost } from '../view/template.js';
@@ -13,41 +14,68 @@ export const showMenuPrivacity = (event) => {
 }
 
 export const saveImageEvent = (event) =>{
- /* const file = document.querySelector('#file-upload');
-  console.log(file.files[0]);
-  console.log(event);
-  
-  
- // saveImage(file);8*/
+  event.preventDefault();
+  const file = document.querySelector('#file-upload');
+  document.querySelector('.nameImg').innerHTML = file.files[0].name;
+}
+
+export const showMyPostEvent = (event) =>{
+  event.preventDefault();
+  console.log(event.target);  
+  if(event.target.getAttribute('name') == 'perfil'){
+  event.target.innerHTML = 'Mikuna';
+  event.target.setAttribute('name','Mikuna');
+  paintMyPost(currentUser());
+  }else{
+  event.target.innerHTML = 'Publicaciones'
+  event.target.setAttribute('name','perfil');
+  paintMikunaPost(currentUser());
+}
+}
+
+export const paintMyPost = (id) =>{
+  getPost()
+    .onSnapshot((querySnapshot) => {
+      document.querySelector('.container-list-posts').innerHTML = ' ';
+      querySnapshot.forEach((post) => {
+        if (post.data().uidUser === id) { 
+          paintPost(post.data(), post.id); }
+      });
+    });
 }
 
 // llamada a guardar post en el database
 export const createPostEvent = (event) => {
   event.preventDefault();
+  const file = document.querySelector('#file-upload');
   const contentForPost = document.querySelector('#content-for-post');
   const type = contentForPost.getAttribute('name');
-  const userId = currentUser();
-  getUserById(userId).then((user) => {
-    savePost(user.data(), userId, contentForPost.value, type).then(() => {
+  const dataPost = {
+    fichero: file,
+    contentPost: contentForPost.value,
+    privacityPost: type
+  }
+  getUserById(currentUser()).then((user) => {
+    if(file.value !== '')
+      savePostImg(dataPost, user.data());
+    else {
+      dataPost.url = '';
+      savePost(user.data(), dataPost);
       contentForPost.value = '';
-      window.location.hash = '#/mikuna';
+    }
     }).catch((error) => {
       alert(error.message);
-      console.log('primera promesa');      
-    });
-  }).catch((error) => {
-    alert(error.message);
-    console.log('segunda promesa');      
-  });
+    })
 };
 
 // llamada a repintar la red social
-export const paintMikunaPost = (user) => {
+export const paintMikunaPost = (id) => {
   getPost()
     .onSnapshot((querySnapshot) => {
       document.querySelector('.container-list-posts').innerHTML = ' ';
       querySnapshot.forEach((post) => {
-        if (post.data().privacity === 'Public' || (post.data().uidUser === user.id && post.data().privacity === 'Private')) { paintPost(post.data(), post.id); }
+        if (post.data().privacity === 'Public' || (post.data().uidUser === id && post.data().privacity === 'Private')) { 
+          paintPost(post.data(), post.id); }
       });
     });
 };

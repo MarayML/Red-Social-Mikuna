@@ -38,6 +38,7 @@ export const paintPost = (userPost, idPost) => {
     </div>
     <p id = "ptexto" class = "text-post">${userPost.contentPost}</p>
     <textarea id = "areatexto" class = "text-post text-edit hide">${userPost.contentPost}</textarea>
+    <img class = ${(userPost.photoPost === '')? 'hide' : 'imgPost'} src = ${userPost.photoPost} }>
     <section class = footer-post>
     <div class = div-likes>
     <i class="far fa-thumbs-up margin-left ${(paintLikes(userPost)) ? textColor : ''}" id = "icon-like"></i>

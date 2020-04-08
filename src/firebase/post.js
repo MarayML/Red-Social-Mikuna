@@ -1,18 +1,18 @@
 import { currentUser } from "../firebase/auth.js";
 
-export const savePost = (user, userId, content, type) => firebase.firestore()
-  .collection('posts')
-  .add({
-    uidUser: userId,
+export const savePost = (user, post) => firebase.firestore().collection('posts').add({
+    uidUser: currentUser(),
     nameUser: user.nameUser,
     photoUser: user.photoUser,
     colorUser: user.colorUser,
-    contentPost: content,
+    contentPost: post.contentPost,
     likes: [],
     comment: [],
-    privacity: type,
+    photoPost: post.url,
+    privacity: post.privacityPost,
     publicationDate: new Date(),
   });
+ 
 
 export const saveComment = (userId, user, idpost, contentC) => firebase.firestore().collection('comments')
   .add({
@@ -75,6 +75,12 @@ export const updatePostComment = (idPost, value) => {
 export const updatePostPrivacity = (idPost, value) => {
   firebase.firestore().collection('posts').doc(idPost).update({
     privacity: value,
+  });
+};
+
+export const updatePostPhoto = (idPost, value) => {
+  firebase.firestore().collection('posts').doc(idPost).update({
+    photoPost: value,
   });
 };
 
