@@ -4,6 +4,11 @@ import { getPost, savePost, getUserById } from '../firebase/post.js';
 import { currentUser, signOut } from '../firebase/auth.js';
 import { paintPost } from '../view/template.js';
 
+export const showPerfilEvent = (event) => {
+  event.preventDefault();  
+  window.location.hash = '#/perfil';
+}
+
 export const showMenuPrivacity = (event) => {
   event.preventDefault();
   const menu = document.querySelector('.ul-private');
@@ -57,7 +62,7 @@ export const createPostEvent = (event) => {
   }
   getUserById(currentUser()).then((user) => {
     if(file.value !== '')
-      savePostImg(dataPost, user.data());
+    savePostImg(dataPost, user.data());
     else {
       dataPost.url = '';
       savePost(user.data(), dataPost);

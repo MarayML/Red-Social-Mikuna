@@ -27,13 +27,42 @@ export const saveComment = (userId, user, idpost, contentC) => firebase.firestor
 export const createUserCollection = (userData) => {
   firebase.firestore().collection('users').doc(userData.idUser)
     .set({
-      nameUser: (userData.nameUser === null) ? 'An&oacute;nimo' : userData.nameUser,
-      photoUser: (userData.photoUser === null) ? './image/photo.png' : userData.photoUser,
-      birthUser: (userData.birthUser === null) ? '' : userData.birthUser,
+      nameUser: (userData.nameUser === "") ? 'An&oacute;nimo' : userData.nameUser,
+      photoUser: userData.photoUser,
+      birthUser: userData.birthUser,
       colorUser: userData.colorUser,
       ocupacionUser: userData.ocupacionUser,
       emailUser: userData.emailUser,
     });
+};
+
+export const updateDataUser = (userData) => {
+  updateUserCollection(userData);
+  updateUserPost(userData);
+}
+
+
+const updateUserCollection = (userData) => {
+  firebase.firestore().collection('users').doc(userData.idUser).update({
+      nameUser: (userData.nameUser === "") ? 'An&oacute;nimo' : userData.nameUser,
+      photoUser: userData.photoUser,
+      birthUser: userData.birthUser,
+      colorUser: (userData.colorUser === 'Color preferido')? 'Verde':userData.colorUser,
+      ocupacionUser: userData.ocupacionUser,
+  });
+};
+
+const updateUserPost = (userData) => {
+  firebase.firestore().collection('posts').where('uidUser','==',userData.idUser)
+  .get().then(function(querySnapshot) {
+  querySnapshot.forEach(function(doc) {
+    doc.ref.update({
+      nameUser: (userData.nameUser === "") ? 'An&oacute;nimo' : userData.nameUser,
+      photoUser: userData.photoUser,
+      colorUser: (userData.colorUser === 'Color preferido')? 'Verde':userData.colorUser,
+    });
+  });
+}); 
 };
 
 export const getUserById = (idUser) => firebase.firestore().collection('users').doc(idUser).get();

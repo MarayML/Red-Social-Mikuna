@@ -1,13 +1,16 @@
 import { registerLogEvent } from '../controller/register-controller.js';
 import { hidePassword, showPassword } from '../controller/login-controller.js';
 
+
 export default () => {
+  const base = document.getElementById('base');
+  base.innerHTML = ''
   const regContainer = document.createElement('div');
   const registerTemplate = `
   <main class="main-init-register">
-    <section class="init-banner"><img src = "./image/index-2.jpg"></section>
+    <section class="init-banner"><img src = "./image/index.jpg"></section>
     <section class = "init-login">
-    <img src = "./image/logo.jpg">
+  <img class="photo-current-user" id = 'userPhoto' src='./image/photo.png'>
     <h5>Registre sus datos</h5>
   <form>
   <input type="text" name = "Name" id = "input-name" placeholder= "  Name" class="field"><br><br>

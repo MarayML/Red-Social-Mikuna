@@ -9,8 +9,7 @@ export const registerLogEvent = (event) => {
   const name = document.querySelector('#input-name');
   const birth = document.querySelector('#input-birth');
   const colorIndex = document.querySelector('.list-color').options.selectedIndex; 
-  const color = document.querySelector('.list-color').options[colorIndex].text;
-  console.log(color);  
+  let color = document.querySelector('.list-color').options[colorIndex].text;
   if(color === 'Color preferido') color = 'Verde';
   const ocupacion = document.querySelector('#input-ocupacion');
   const email = document.querySelector('#input-email');
@@ -26,7 +25,6 @@ export const registerLogEvent = (event) => {
       ocupacionUser: ocupacion.value,
       emailUser: email.value,
     };
-    console.log(userData);    
     createUserCollection(userData);
     window.location.hash = '#/mikuna';
   })

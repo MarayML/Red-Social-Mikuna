@@ -8,6 +8,8 @@ import {
 } from '../controller/login-controller.js';
 
 export const viewLogin = () => {
+  const base = document.getElementById('base');
+  base.innerHTML = ''
   const logContainer = document.createElement('div');
   logContainer.innerHTML = '';
   const loginTemplate = `

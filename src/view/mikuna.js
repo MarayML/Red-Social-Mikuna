@@ -1,10 +1,11 @@
 import {
   createPostEvent, paintMikunaPost, iconPrivateEvent, iconsignOutEvent, 
-  showMenuPrivacity, saveImageEvent, showMyPostEvent,
+  showMenuPrivacity, saveImageEvent, showMyPostEvent,showPerfilEvent,
 } from '../controller/mikuna-controller.js';
 
 export default (userData) => {
-  // eslint-disable-next-line no-console
+  const base = document.getElementById('base');
+  base.innerHTML = ''
   const mikunaMain = document.createElement('div');
   const postTemplate = `
   <nav class = "nav-bar">
@@ -56,7 +57,7 @@ export default (userData) => {
   mikunaMain.querySelector('.btn-privacy').addEventListener('click', showMenuPrivacity);
   mikunaMain.querySelector('.icon-arrow').addEventListener('click', showMenuPrivacity);
   mikunaMain.querySelector('#file-upload').addEventListener('change', saveImageEvent);
-  //mikunaMain.querySelector('#btn-my-perfil').addEventListener('change', showPerfilEvent);
+  mikunaMain.querySelector('#btn-my-perfil').addEventListener('click', showPerfilEvent);
   mikunaMain.querySelector('#btn-my-post').addEventListener('click', showMyPostEvent);
 
   return mikunaMain;
